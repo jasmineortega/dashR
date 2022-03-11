@@ -10,10 +10,10 @@ library(purrr)
 
 j_data <- read_csv("data/jasmine_df.csv")
 
-j_data <- j_data |> filter(is.na(j_data$cast_count) == FALSE)
+j_data <- j_data %>% filter(is.na(j_data$cast_count) == FALSE)
 
-cast_data <- j_data |>
-  group_by(release_year) |>
+cast_data <- j_data %>% 
+  group_by(release_year) %>% 
   summarize(mean_cast_count = mean(cast_count))
 
 app <- Dash$new(external_stylesheets = dbcThemes$BOOTSTRAP)
@@ -46,7 +46,7 @@ app$callback(
   list(input('xslider', 'value')),
   function(xcol) {
     
-    p <- cast_data |>
+    p <- cast_data %>% 
       ggplot(aes(x=release_year,
                  y=mean_cast_count)) + 
       geom_point() +
@@ -60,9 +60,9 @@ app$callback(
 )
 
 
-app$run_server(debug = T)
+# app$run_server(debug = T)
 
-# app$run_server(host = '0.0.0.0')
+app$run_server(host = '0.0.0.0')
 # app$run_server(debug = T) # use when running locally
 
 
