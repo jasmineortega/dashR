@@ -1,3 +1,3 @@
 # dashR
 Link to dashboard plot: 
-https://github.com/jasmineortega/dashR
+https://jasmine-532r.herokuapp.com/
